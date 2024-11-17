@@ -10,13 +10,13 @@ import {
   Form,
   Alert,
 } from "react-bootstrap";
-import { FaBars } from "react-icons/fa";
 import FacultyNav from "./Faculty-navbar";
+import "./App.css"; // Ensure to include the CSS file for fullscreen styling
 
 const SubjectEnroll = () => {
   const [students, setStudents] = useState([
-    { id: 1, name: "John Doe", subjects: ["Maths", "Science"] },
-    { id: 2, name: "Jane Smith", subjects: ["English", "History"] },
+    { id: 1, name: "John", subjects: ["Science"] },
+    { id: 2, name: "Jane", subjects: ["History"] },
   ]);
   const [showEnrollModal, setShowEnrollModal] = useState(false);
   const [showAddStudentModal, setShowAddStudentModal] = useState(false);
@@ -40,7 +40,9 @@ const SubjectEnroll = () => {
     setAlertMessage(`Student "${selectedStudent.name}" enrolled/updated successfully!`);
     setStudents((prevStudents) =>
       prevStudents.map((student) =>
-        student.id === selectedStudent.id ? { ...student, subjects: selectedSubjects } : student
+        student.id === selectedStudent.id
+          ? { ...student, subjects: selectedSubjects }
+          : student
       )
     );
     setShowEnrollModal(false);
@@ -60,11 +62,6 @@ const SubjectEnroll = () => {
         ? prevSubjects.filter((item) => item !== subject)
         : [...prevSubjects, subject]
     );
-  };
-
-  const handleDeleteStudent = (id) => {
-    setStudents(students.filter((student) => student.id !== id));
-    setAlertMessage("Student deleted successfully!");
   };
 
   const handleAddStudent = (e) => {
@@ -93,11 +90,11 @@ const SubjectEnroll = () => {
     <>
       <FacultyNav />
 
-      {/* Main Content */}
-      <Container fluid className="mt-4">
-        <Row>
-          <Col>
-            <Card className="shadow p-4">
+      {/* Fullscreen Container */}
+      <Container fluid className="fullscreen-container ">
+        <Row className="justify-content-center align-items-center h-100">
+          <Col md={10}>
+            <Card className="shadow p-4 fullscreen-card  mt-5">
               <h2 className="text-center mb-4" style={{ color: "green" }}>
                 Enroll Subjects
               </h2>
@@ -117,7 +114,7 @@ const SubjectEnroll = () => {
                 variant="primary"
                 onClick={() => setShowAddStudentModal(true)}
                 className="mb-5"
-                size="sm" // Makes the button smaller
+                size="sm"
               >
                 Add Student
               </Button>
@@ -127,7 +124,7 @@ const SubjectEnroll = () => {
                 <thead className="table-primary">
                   <tr>
                     <th>S.NO</th>
-                    <th>Student Name</th>
+                    <th>Name</th>
                     <th>Subjects</th>
                     <th>Actions</th>
                   </tr>
@@ -146,13 +143,6 @@ const SubjectEnroll = () => {
                           className="me-2"
                         >
                           Edit
-                        </Button>
-                        <Button
-                          variant="danger"
-                          size="sm"
-                          onClick={() => handleDeleteStudent(student.id)}
-                        >
-                          Delete
                         </Button>
                       </td>
                     </tr>
@@ -178,7 +168,11 @@ const SubjectEnroll = () => {
                   {allSubjects.map((subject) => (
                     <Button
                       key={subject}
-                      variant={selectedSubjects.includes(subject) ? "success" : "outline-secondary"}
+                      variant={
+                        selectedSubjects.includes(subject)
+                          ? "success"
+                          : "outline-secondary"
+                      }
                       className="me-2 mb-2"
                       onClick={() => handleToggleSubject(subject)}
                     >
@@ -217,7 +211,11 @@ const SubjectEnroll = () => {
                   {allSubjects.map((subject) => (
                     <Button
                       key={subject}
-                      variant={newStudentSubjects.includes(subject) ? "success" : "outline-secondary"}
+                      variant={
+                        newStudentSubjects.includes(subject)
+                          ? "success"
+                          : "outline-secondary"
+                      }
                       className="me-2 mb-2"
                       onClick={() => handleToggleNewStudentSubject(subject)}
                     >

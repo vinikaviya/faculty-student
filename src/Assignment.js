@@ -35,17 +35,16 @@ const Assignment = () => {
 
   return (
     <>
-        <StudentNav />
-    
+      <StudentNav />
 
       {/* Main Content */}
-      <div className="flex-grow-1 p-3" style={{ backgroundColor: '#f4f6f9' }}>
-        <Container className="mt-5">
+      <div className="flex-grow-1" style={{ backgroundColor: "#f4f6f9", minHeight: "100vh" }}>
+        <Container fluid className="mt-5">
           <Row className="justify-content-center">
             <Col md={10}>
-              <Card className="shadow-lg p-4" style={{ backgroundColor: '#ffffff', borderRadius: '10px' }}>
+              <Card className="shadow-lg" style={{ backgroundColor: "#ffffff", borderRadius: "10px" }}>
                 <Card.Body>
-                  <h2 className="text-center mb-4" style={{ color: 'green' }}>
+                  <h2 className="text-center mb-4" style={{ color: "green" }}>
                     Assignments
                   </h2>
 
@@ -54,17 +53,17 @@ const Assignment = () => {
                       variant="success"
                       className="mb-3"
                       style={{
-                        backgroundColor: '#d4edda',
-                        borderColor: '#c3e6cb',
-                        color: '#155724',
-                        borderRadius: '5px',
+                        backgroundColor: "#d4edda",
+                        borderColor: "#c3e6cb",
+                        color: "#155724",
+                        borderRadius: "5px",
                       }}
                     >
                       {alertMessage}
                     </Alert>
                   )}
 
-                  <Table responsive bordered hover style={{ backgroundColor: '#ffffff' }}>
+                  <Table responsive bordered hover style={{ backgroundColor: "#ffffff" }}>
                     <thead className="table-primary">
                       <tr>
                         <th>S.NO</th>
@@ -85,7 +84,7 @@ const Assignment = () => {
                               className={`badge ${
                                 assignment.status === "Submitted" ? "bg-success" : "bg-warning"
                               }`}
-                              style={{ fontSize: '14px' }}
+                              style={{ fontSize: "14px" }}
                             >
                               {assignment.status}
                             </span>
@@ -97,12 +96,12 @@ const Assignment = () => {
                                 size="sm"
                                 onClick={() => handleUploadClick(assignment)}
                                 style={{
-                                  backgroundColor: '#5c6bc0',
-                                  borderColor: '#5c6bc0',
-                                  transition: 'all 0.3s ease',
+                                  backgroundColor: "#5c6bc0",
+                                  borderColor: "#5c6bc0",
+                                  transition: "all 0.3s ease",
                                 }}
-                                onMouseEnter={(e) => (e.target.style.backgroundColor = '#3f51b5')}
-                                onMouseLeave={(e) => (e.target.style.backgroundColor = '#5c6bc0')}
+                                onMouseEnter={(e) => (e.target.style.backgroundColor = "#3f51b5")}
+                                onMouseLeave={(e) => (e.target.style.backgroundColor = "#5c6bc0")}
                               >
                                 <FaUpload className="me-2" />
                                 Upload
@@ -121,28 +120,28 @@ const Assignment = () => {
           {/* Upload Modal */}
           <Modal show={showUploadModal} onHide={handleModalClose} centered>
             <Modal.Header closeButton>
-              <Modal.Title style={{ color: '#5c6bc0' }}>Upload Assignment</Modal.Title>
+              <Modal.Title style={{ color: "#5c6bc0" }}>Upload Assignment</Modal.Title>
             </Modal.Header>
-            <Modal.Body style={{ backgroundColor: '#f9f9f9' }}>
+            <Modal.Body style={{ backgroundColor: "#f9f9f9" }}>
               <Form onSubmit={handleUploadSubmit}>
                 <Form.Group controlId="uploadFile" className="mb-3">
                   <Form.Label>
                     <FaFileAlt className="me-2" />
                     Assignment File
                   </Form.Label>
-                  <Form.Control type="file" required style={{ borderColor: '#5c6bc0' }} />
+                  <Form.Control type="file" required style={{ borderColor: "#5c6bc0" }} />
                 </Form.Group>
                 <Button
                   type="submit"
                   variant="primary"
                   className="w-100"
                   style={{
-                    backgroundColor: '#5c6bc0',
-                    borderColor: '#5c6bc0',
-                    transition: 'all 0.3s ease',
+                    backgroundColor: "#5c6bc0",
+                    borderColor: "#5c6bc0",
+                    transition: "all 0.3s ease",
                   }}
-                  onMouseEnter={(e) => (e.target.style.backgroundColor = '#3f51b5')}
-                  onMouseLeave={(e) => (e.target.style.backgroundColor = '#5c6bc0')}
+                  onMouseEnter={(e) => (e.target.style.backgroundColor = "#3f51b5")}
+                  onMouseLeave={(e) => (e.target.style.backgroundColor = "#5c6bc0")}
                 >
                   Submit Assignment
                 </Button>
@@ -151,7 +150,7 @@ const Assignment = () => {
           </Modal>
         </Container>
       </div>
-      </>
+    </>
   );
 };
 

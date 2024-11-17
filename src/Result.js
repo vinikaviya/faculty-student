@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Table, Button, Modal, Form, Alert } from "react-bootstrap";
 import StudentNav from "./Student-navbar"; // Import Sidebar
@@ -57,15 +52,14 @@ const Result = () => {
   };
 
   return (
-<>
-        <StudentNav />
-     
+    <>
+      <StudentNav />
 
       {/* Main Content */}
       <div className="flex-grow-1 p-3" style={{ backgroundColor: '#f7f7f7' }}>
-        <Container className="mt-1" style={{ maxWidth: '800px' }}>
+        <Container fluid>
           <Row className="justify-content-center">
-            <Col md={12} sm={12}>
+            <Col xs={12} md={10} lg={8}>
               <Card className="shadow-lg rounded" style={{ backgroundColor: '#ffffff' }}>
                 <Card.Body>
                   <h2 className="text-center mb-4 text-primary">Student Report Card</h2>
@@ -94,14 +88,14 @@ const Result = () => {
                     </tbody>
                   </Table>
 
-                  <Row className="mt-1">
+                  <Row className="mt-2">
                     <Col>
                       <h5>Total Marks: {student.totalMarks} / {student.maxMarks}</h5>
                       <h5>Percentage: {student.percentage}%</h5>
                     </Col>
                   </Row>
 
-                  <Row className="mt-1">
+                  <Row className="mt-2">
                     <Col className="text-center">
                       <Button variant={student.percentage >= 50 ? "success" : "danger"} size="lg">
                         {student.percentage >= 50 ? "Passed" : "Failed"}
@@ -113,7 +107,7 @@ const Result = () => {
             </Col>
           </Row>
         </Container>
-        
+
         {/* Edit Result Modal */}
         <Modal show={showEditModal} onHide={handleModalClose} centered>
           <Modal.Header closeButton>
@@ -143,9 +137,8 @@ const Result = () => {
           </Modal.Body>
         </Modal>
       </div>
-      </>
+    </>
   );
 };
 
 export default Result;
-

@@ -61,6 +61,7 @@ const BarChartComponent = () => {
   // Define bar chart options
   const barChartOptions = {
     responsive: true,
+    maintainAspectRatio: false, // Allow the chart to expand
     plugins: {
       legend: {
         display: true, // Show legend
@@ -85,25 +86,26 @@ const BarChartComponent = () => {
   };
 
   return (
- <>
- <FacultyNav/>
- 
+    <>
+      <FacultyNav />
+
       {/* Main Content */}
       <div
-        className="flex-grow-1 d-flex justify-content-center align-items-center p-3"
-        style={{ backgroundColor: "#f7f7f7" }}
+        className="d-flex justify-content-center align-items-center "
+        style={{ backgroundColor: "#f7f7f7", minHeight: "100vh" }}
       >
-        <Container>
-          <Row className="justify-content-center">
-            <Col xs={12} md={10} lg={8}>
-              <Card className="shadow-lg bg-light">
+        <Container fluid >
+          <Row className="justify-content-center ">
+            <Col xs={12} md={10} lg={8} >
+              <Card className="shadow-lg bg-light  ">
                 <Card.Body>
-                  <h4 className="text-center mb-4">Subjects Enrollment Bar Chart</h4>
+                  <h4 className="text-center mb-5">Subjects Enrollment Bar Chart</h4>
                   <div
                     style={{
+                   
                       position: "relative",
-                      width: "100%",
-                      height: "400px",
+                      width: "90%",
+                      height: "60vh", // Adjust height to occupy 70% of the viewport height
                     }}
                   >
                     <Bar data={barChartData} options={barChartOptions} />
